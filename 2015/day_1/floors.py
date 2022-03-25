@@ -19,7 +19,7 @@ To what floor do the instructions take Santa?
 """
 
 def get_problem_input() -> str:
-  with open("floors_input_2", "r") as f:
+  with open("floors_input", "r") as f:
     return f.readlines()[0]
 
 # Day 1 Problem, Part 1
@@ -45,4 +45,4 @@ def find_first_basement_index(paren_map: str) -> int:
   return -1
 
 if __name__ == "__main__":
-  print(find_first_basement_index(get_problem_input()))
+  print(find_floor_number(get_problem_input()))
