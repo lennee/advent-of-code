@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-const FILENAME = "./floors_input"
+const FILENAME = "./day_1/floors_input"
 
 func read_file(filename string) string {
 	content, err := ioutil.ReadFile(filename)
@@ -35,5 +35,6 @@ func main() {
 	data := read_file(FILENAME)
 	final_floor := find_floor(data, false)
 	first_negative_floor := find_floor(data, true)
-	fmt.Println("Final Floor:", final_floor, "\nFirst Negative Floor:", first_negative_floor)
+	fmt.Println("Final Floor:", final_floor)
+	fmt.Println("First Negative Floor:", first_negative_floor)
 }

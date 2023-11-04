@@ -28,7 +28,7 @@ def update_index(cur_index, move):
   if move == "v": return (index[0], index[1] - 1)
   return index
 
-def deliver_presents_alternate(delivery_input):
+def deliver_presents(delivery_input):
   deliveries = defaultdict(int)
   santa_index = (0, 0)
   deliveries[f'{santa_index[0]},{santa_index[1]}'] += 2

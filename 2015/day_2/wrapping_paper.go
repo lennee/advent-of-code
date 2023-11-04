@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-const FILENAME = "./paper_input"
+const FILENAME = "./day_2/paper_input"
 
 func read_file(filename string) string {
 	content, err := ioutil.ReadFile(filename)
@@ -56,5 +56,6 @@ func process(presents []string) []int {
 func main() {
 	response := process(strings.Split(read_file(FILENAME), "\n"))
 
-	fmt.Println("Paper Amount:", response[0], "\nRibbon Amount:", response[1])
+	fmt.Println("Paper Amount:", response[1])
+	fmt.Println("Ribbon Amount:", response[0])
 }
