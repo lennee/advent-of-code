@@ -17,7 +17,7 @@ After following the instructions, how many lights are lit?
 """
 
 def get_problem_input():
-  with open("lit_lights_input", "r") as f:
+  with open("./day_6/lit_lights_input", "r") as f:
     return [item.split(" ") for item in f.read().split("\n")]
 
 class Light:
@@ -64,7 +64,7 @@ class Board:
         return count
 
 if __name__ == "__main__":
-    board = Board(999,999)
+    board = Board(1000,1000)
     for i, command in enumerate(get_problem_input()):
         print(f'processing command {i}...')
         board.process_command(command)
