@@ -37,17 +37,22 @@ fn find_floor(input: &str, first_negative: bool) -> i32 {
     floor_idx
 }
 
-fn main() {
+fn read_input() -> String {
     let file_path = "./day_1/floors_input";
-    let contents = match fs::read_to_string(file_path) {
+    match fs::read_to_string(file_path) {
         Ok(data) => data,
         Err(err) => {
             println!("{}", err);
             "".to_string()
         }
-    };
-    if contents.len() > 0 {
-        println!("Final Floor: {}", find_floor(&contents, false));
-        println!("First Basement Visit: {}", find_floor(&contents, true));
+    }
+}
+
+fn main() {
+    let data = read_input();
+
+    if data.len() > 0 {
+        println!("Final Floor: {}", find_floor(&data, false));
+        println!("First Basement Visit: {}", find_floor(&data, true));
     }
 }

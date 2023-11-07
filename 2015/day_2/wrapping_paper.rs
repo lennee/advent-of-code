@@ -31,25 +31,23 @@ struct Present {
 
 impl Present {
     fn required_wrapping_paper(&self) -> u32 {
-        self.w * self.h * 2 + self.h * self.l * 2 + self.l * self.w * 2 + self.min()
+        let d = self.dims();
+        d[0] * d[1] * 3 + d[1] * d[2] * 2 + d[0] * d[2] * 2
     }
 
     fn required_ribbon(&self) -> u32 {
-        let mut sides = vec![self.w, self.h, self.l];
-        sides.sort();
-        self.volume() + sides[0] * 2 + sides[1] * 2
+        let d = self.dims();
+        self.volume() + d[0] * 2 + d[1] * 2
+    }
+
+    fn dims(&self) -> Vec<u32> {
+        let mut dims = vec![self.w, self.h, self.l];
+        dims.sort();
+        dims
     }
 
     fn volume(&self) -> u32 {
         self.w * self.h * self.l
-    }
-    
-    fn min(&self) -> u32 {
-        vec![self.w * self.h, self.h * self.l, self.l * self.w]
-            .iter()
-            .min()
-            .unwrap()
-            .clone()
     }
 }
 
@@ -69,19 +67,20 @@ fn build_present_from_input(input_line: &str) -> Present {
     }
 }
 
-
-fn main() {
+fn read_input() -> String {
     let input_file_path = String::from("./day_2/paper_input");
-    let input_string = match fs::read_to_string(input_file_path) {
+    match fs::read_to_string(input_file_path) {
         Ok(input) => input,
         Err(_) => "".to_string()
-    };
-    
+    }
+}
+
+fn process_input(input_str: String) {
     let mut total_paper = 0;
     let mut total_ribbon = 0;
-    
-    if input_string.len() > 0 {
-        for input in input_string.split("\n") {
+
+    if input_str.len() > 0 {
+        for input in input_str.split("\n") {
             let present = build_present_from_input(input);
             total_paper += present.required_wrapping_paper();
             total_ribbon += present.required_ribbon();
@@ -90,4 +89,11 @@ fn main() {
     
     println!("Total wrapping paper needed: {} sqft", total_paper);
     println!("Total ribbon needed: {} sqft", total_ribbon);
+}
+
+fn main() {
+
+    let input_string = read_input();
+    process_input(input_string);
+
 }
