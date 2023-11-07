@@ -23,10 +23,10 @@ use std::fs;
 
 fn find_floor(input: &str, first_negative: bool) -> i32 {
     let mut floor_idx = 0;
-    for (i, c) in input.chars().enumerate() {
-        if c == '(' {
+    for (i, &c) in input.as_bytes().iter().enumerate() {
+        if c == b'(' {
             floor_idx += 1;
-        } else if c == ')' {
+        } else if c == b')' {
             floor_idx -= 1;
         }
 
